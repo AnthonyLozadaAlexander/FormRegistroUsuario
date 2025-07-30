@@ -2,6 +2,7 @@ package Forms;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -273,6 +274,15 @@ public class FormUsuarios extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this, "Error: Debe Seleccionar Una Fila De La Tabla", "Error", JOptionPane.INFORMATION_MESSAGE);
            return;
        }
+       
+       int edad = Integer.parseInt(txtEdad.getText());
+       
+       nombreList.set(filaSelec, txtNombre.getText());
+       apellidoList.set(filaSelec, txtApellido.getText());
+       edadList.set(filaSelec, edad);
+       correoList.set(filaSelec, txtCorreo.getText().trim());
+        
+        
     }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
