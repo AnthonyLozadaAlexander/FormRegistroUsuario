@@ -130,6 +130,11 @@ public class FormUsuarios extends javax.swing.JFrame {
         btnModificar.setBackground(new java.awt.Color(51, 204, 255));
         btnModificar.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 14)); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(51, 255, 204));
@@ -256,6 +261,19 @@ public class FormUsuarios extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+       if(nombreList.isEmpty()){
+           JOptionPane.showMessageDialog(this, "Error: No Hay Registros", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+        
+        int filaSelec = tabla.getSelectedRow();
+       if(filaSelec < 0){
+           JOptionPane.showMessageDialog(this, "Error: Debe Seleccionar Una Fila De La Tabla", "Error", JOptionPane.INFORMATION_MESSAGE);
+           return;
+       }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
