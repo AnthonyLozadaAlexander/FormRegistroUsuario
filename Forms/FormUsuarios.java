@@ -141,6 +141,11 @@ public class FormUsuarios extends javax.swing.JFrame {
         btnEliminar.setBackground(new java.awt.Color(51, 255, 204));
         btnEliminar.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 100, -1));
 
         btnBuscar.setBackground(new java.awt.Color(255, 204, 204));
@@ -281,9 +286,27 @@ public class FormUsuarios extends javax.swing.JFrame {
        apellidoList.set(filaSelec, txtApellido.getText());
        edadList.set(filaSelec, edad);
        correoList.set(filaSelec, txtCorreo.getText().trim());
-        
-        
+       
+        model.setValueAt(txtNombre.getText(), filaSelec, 0);
+        model.setValueAt(txtApellido.getText(), filaSelec, 1);
+        model.setValueAt(txtCorreo.getText().trim(), filaSelec, 2);
+        model.setValueAt(txtEdad.getText().trim(), filaSelec, 3);
+               
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int sel = tabla.getSelectedRow();
+        if (sel < 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        nombreList.remove(sel);
+        apellidoList.remove(sel);
+        correoList.remove(sel);
+        edadList.remove(sel);
+        model.removeRow(sel);
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
